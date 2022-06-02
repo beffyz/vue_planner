@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.todo-section {
+  font-family: 'Lato', sans-serif;
+  border: 1px solid black;
+  max-width: 300px;
+  width: 100%;
+  margin-left: 40%;
+  margin-top: 20%;
+}
+
+.todo-box {
+  padding: 30px;
+}
+
+.todo-box__add {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.todo-box__add--input {
+  padding-left: 10px;
+}
+
+.todo-box__add--button {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.new-todo {
+  margin-bottom: 10px;
+}
+
+.new-todo__box {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.new-todo__box--button {
+  border: none;
+  background-color: transparent;
+  color: #ff0000;
+  font-size: 17px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.new-todo__box--filter-box {
+  display: flex;
+  gap: 5px;
+}
+
+.new-todo__box--filter-btn {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #8ee78e;
+  }
+}
+
+.active {
+  background-color: #9aff00;
+}
