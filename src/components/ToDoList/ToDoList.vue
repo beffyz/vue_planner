@@ -11,6 +11,11 @@
         />
         <button @click="addTask" class="todo-box__add--button">Add</button>
       </div>
+      <div>
+        <p>
+          {{ newTodo.error }}
+        </p>
+      </div>
       <div class="new-todo">
         <div
           class="new-todo__box"
@@ -48,7 +53,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export interface Todos {
-  error: string[];
+  error: string;
   id: number;
   text: string;
   completed: boolean;
@@ -80,18 +85,25 @@ export default defineComponent({
   },
   methods: {
     addTask() {
-      const todo = {
-        ...this.newTodo,
-        id: Math.random(),
-        completed: false,
-      };
-      localStorage.setItem(
-        "toDoList",
-        JSON.stringify([...this.toDoList, todo])
-      );
+      if (!this.newTodo.text) {
+        this.newTodo.error = "Enter new task!";
+        return;
+      }
+      if (this.newTodo.text) {
+        this.newTodo.error = "";
+        const todo = {
+          ...this.newTodo,
+          id: Math.random(),
+          completed: false,
+        };
+        localStorage.setItem(
+          "toDoList",
+          JSON.stringify([...this.toDoList, todo])
+        );
 
-      this.toDoList = [...this.toDoList, todo];
-      this.newTodo.text = "";
+        this.toDoList = [...this.toDoList, todo];
+        this.newTodo.text = "";
+      }
     },
     removeTask(todo: Todos) {
       this.toDoList = this.toDoList.filter((item) => item.id !== todo.id);
